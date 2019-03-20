@@ -66,10 +66,49 @@ class UserController {
                 completion(false)
                 return
             }
-        }.resume()
+            }.resume()
     }
     
     //POST Request (Update)
-    
+    func postUser(name: String, favoriteApp: String, completion: @escaping (Bool) -> Void) {
+        
+        //URL
+        guard var url = baseURL else { completion(false) ; return }
+        url.appendPathExtension("json")
+        url.appendPathComponent("users")
+        print(url)
+        
+        //URLRequest
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let newUser = User(name: name, favoriteApp: favoriteApp)
+        
+        //Encoding
+        let encoder = JSONEncoder()
+        
+        do {
+            let data = try encoder.encode(newUser)
+            request.httpBody = data
+        } catch {
+            print("❌ Error \(error) \(error.localizedDescription) ❌")
+            completion(false)
+            return
+        }
+        
+        //DataTask + Resume
+        let dataTask = URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                print("❌ Error \(error) \(error.localizedDescription) ❌")
+                completion(false)
+            }
+            
+            //Append to Source of Truth if successful
+            self.users.append(newUser)
+            completion(true)
+            
+        }
+        dataTask.resume()
+    }
     
 }
