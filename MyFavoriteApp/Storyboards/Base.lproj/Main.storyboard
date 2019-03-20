@@ -12,13 +12,13 @@
         <!--My Favorite App-->
         <scene sceneID="3Gh-OP-rEF">
             <objects>
-                <tableViewController id="6pm-hz-jQE" sceneMemberID="viewController">
+                <tableViewController id="6pm-hz-jQE" customClass="UserListTableViewController" customModule="MyFavoriteApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="osN-8P-V3M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="bnr-1A-SB7" detailTextLabel="3j7-uF-gz9" style="IBUITableViewCellStyleValue1" id="36W-ih-3za">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" textLabel="bnr-1A-SB7" detailTextLabel="3j7-uF-gz9" style="IBUITableViewCellStyleValue1" id="36W-ih-3za">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="36W-ih-3za" id="XBo-de-aXT">
@@ -49,7 +49,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Favorite App" id="xFy-dV-jps">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YAr-wC-Vc7"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YAr-wC-Vc7">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="6pm-hz-jQE" id="12p-RJ-dZt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIA-EQ-pKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
